@@ -1,29 +1,50 @@
 'use strict';
 
-var Hapi = require('hapi');
-var staticContent = require('./static');
-var templates = require('./templates');
-var services = require('./services');
+const Chairo = require('chairo');
+const Good = require('good');
+const GoodConsole = require('good-console');
+const Hapi = require('hapi');
+const Inert = require('inert');
+const Vision = require('vision');
+const Static = require('./static');
+const Templates = require('./templates');
+const Services = require('./services');
 
-var server = new Hapi.Server();
+const server = new Hapi.Server();
+const port = Number(process.env.SERVICE_PORT) || 3000;
+const host = process.env.SERVICE_HOST || '0.0.0.0'
 
 server.connection({
-  port: Number(process.env.SERVICE_PORT),
-  host: process.env.SERVICE_HOST
+  port: port,
+  host: host
 });
 
-templates(server);
-staticContent(server);
-services(server);
+const goodOptions = {
+  register: Good,
+  options: {
+    opsInterval: 1000,
+    reporters: [{reporter: GoodConsole, events: { log: '*', response: '*' }}]
+  }
+};
 
-server.register({
-  register: require('good'),
-  options: {opsInterval: 1000,
-              reporters: [{reporter: require('good-console'), events: { log: '*', response: '*' }}]}},
-  function(err) {
-    if (err) { throw err; }
-    server.start(function() {
-      console.log('listening on port: ' + process.env.SERVICE_PORT);
+const serviceOptions = {
+  register: Services,
+  options: {
+    host: process.env.PROXY_HOST,
+    port1: process.env.service1_PORT,
+    port2: process.env.service2_PORT
+  }
+};
+
+server.register([goodOptions, serviceOptions, Chairo, Inert, Templates, Static, Vision],
+  (err) => {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+
+    server.start(() => {
+      console.log('listening on port: ' + port);
     });
-});
-
+  }
+);
