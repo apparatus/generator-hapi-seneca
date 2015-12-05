@@ -20,8 +20,12 @@ module.exports = yeoman.generators.Base.extend({
                    this.destinationPath('api/test/siteTest.js'));
 
 
-      this.fs.copy(this.templatePath('public/js/_code.js'),
-                   this.destinationPath('public/js/code.js'));
+      this.fs.copy(this.templatePath('public/js/_main.js'),
+                   this.destinationPath('public/js/main.js'));
+      this.fs.copy(this.templatePath('public/img/fuge-logo.png'),
+                   this.destinationPath('public/img/fuge-logo.png'));
+      this.fs.copy(this.templatePath('public/css/_style.css'),
+                   this.destinationPath('public/css/style.css'));
       this.fs.copy(this.templatePath('public/views/helpers/_basic.js'),
                    this.destinationPath('public/views/helpers/basic.js'));
       this.fs.copy(this.templatePath('public/views/_basic.html'),
@@ -29,6 +33,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
+
       this.fs.copy(this.templatePath('public/_bower.json'),
                    this.destinationPath('public/bower.json'));
       this.fs.copy(this.templatePath('_gitignore'),

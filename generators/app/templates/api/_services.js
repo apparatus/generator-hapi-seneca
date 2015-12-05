@@ -8,19 +8,37 @@ seneca.client({host: process.env.PROXY_HOST, port: process.env.service2_PORT, pi
 module.exports = function(server) {
   server.route({
     method: 'GET',
-    path: '/route1',
+    path: '/service1/action1',
     handler: function(request, reply) {
-      seneca.act({role: 'service1', cmd: 'action1'}, function(err) {
-        reply({result: err ? 'error' : 'ok', err: err});
+      seneca.act({role: 'service1', cmd: 'action1'}, function(err, res) {
+        reply({result: err ? 'error' : res, err: err});
       });
     }
   });
   server.route({
     method: 'GET',
-    path: '/route2',
+    path: '/service1/action2',
     handler: function(request, reply) {
-      seneca.act({role: 'service1', cmd: 'action1'}, function(err) {
-        reply({result: err ? 'error' : 'ok', err: err});
+      seneca.act({role: 'service1', cmd: 'action2'}, function(err, res) {
+        reply({result: err ? 'error' : res, err: err});
+      });
+    }
+  });
+  server.route({
+    method: 'GET',
+    path: '/service2/action1',
+    handler: function(request, reply) {
+      seneca.act({role: 'service2', cmd: 'action1'}, function(err, res) {
+        reply({result: err ? 'error' : res, err: err});
+      });
+    }
+  });
+  server.route({
+    method: 'GET',
+    path: '/service2/action2',
+    handler: function(request, reply) {
+      seneca.act({role: 'service2', cmd: 'action2'}, function(err, res) {
+        reply({result: err ? 'error' : res, err: err});
       });
     }
   });
