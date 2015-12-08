@@ -1,12 +1,12 @@
 {
   "name": "generator-hapi-seneca",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
   "author": {
     "name": "Peter Elger",
-    "email": "",
+    "email": "peter.elger@nearform.com",
     "url": "https://github.com/pelger"
   },
   "scripts": {

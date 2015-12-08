@@ -15,6 +15,14 @@ module.exports = function(server) {
 
     server.route({
       method: 'GET',
+      path: '/',
+      handler: function (request, reply) {
+        reply.redirect('/public/basic.html');
+      }
+    });
+
+    server.route({
+      method: 'GET',
       path: '/public/basic.html',
       handler: function (request, reply) {
         reply.view('basic');
