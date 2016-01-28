@@ -28,10 +28,10 @@ module.exports = function(server) {
 
     server.route({
       method: 'GET',
-      path: '/public/bower_components/{param*}',
+      path: '/public/bootstrap/{param*}',
       handler: {
         directory: {
-          path: __dirname + '/../public/bower_components',
+          path: __dirname + '/../public/bootstrap',
           listing: false
         }
       }

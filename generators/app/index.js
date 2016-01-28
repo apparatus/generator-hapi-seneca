@@ -19,7 +19,8 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(this.templatePath('api/test/_siteTest.js'),
                    this.destinationPath('api/test/siteTest.js'));
 
-
+      this.fs.copy(this.templatePath('public/js/_jquery.min.js'),
+                   this.destinationPath('public/js/jquery.min.js'));
       this.fs.copy(this.templatePath('public/js/_main.js'),
                    this.destinationPath('public/js/main.js'));
       this.fs.copy(this.templatePath('public/img/fuge-logo.png'),
@@ -30,12 +31,40 @@ module.exports = yeoman.generators.Base.extend({
                    this.destinationPath('public/views/helpers/basic.js'));
       this.fs.copy(this.templatePath('public/views/_basic.html'),
                    this.destinationPath('public/views/basic.html'));
+
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap-theme.css'),
+                   this.destinationPath('public/bootstrap/css/bootstrap-theme.css'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap-theme.css.map'),
+                   this.destinationPath('public/bootstrap/css/bootstrap-theme.css.map'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap-theme.min.css'),
+                   this.destinationPath('public/bootstrap/css/bootstrap-theme.min.css'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap-theme.min.css.map'),
+                   this.destinationPath('public/bootstrap/css/bootstrap-theme.min.css.map'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap.css'),
+                   this.destinationPath('public/bootstrap/css/bootstrap.css'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap.css.map'),
+                   this.destinationPath('public/bootstrap/css/bootstrap.css.map'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap.min.css'),
+                   this.destinationPath('public/bootstrap/css/bootstrap.min.css'));
+      this.fs.copy(this.templatePath('public/bootstrap/css/bootstrap.min.css.map'),
+                   this.destinationPath('public/bootstrap/css/bootstrap.min.css.map'));
+      this.fs.copy(this.templatePath('public/bootstrap/fonts/glyphicons-halflings-regular.eot'),
+                   this.destinationPath('public/bootstrap/fonts/glyphicons-halflings-regular.eot'));
+      this.fs.copy(this.templatePath('public/bootstrap/fonts/glyphicons-halflings-regular.svg'),
+                   this.destinationPath('public/bootstrap/fonts/glyphicons-halflings-regular.svg'));
+      this.fs.copy(this.templatePath('public/bootstrap/fonts/glyphicons-halflings-regular.ttf'),
+                   this.destinationPath('public/bootstrap/fonts/glyphicons-halflings-regular.ttf'));
+      this.fs.copy(this.templatePath('public/bootstrap/fonts/glyphicons-halflings-regular.woff'),
+                   this.destinationPath('public/bootstrap/fonts/glyphicons-halflings-regular.woff'));
+      this.fs.copy(this.templatePath('public/bootstrap/fonts/glyphicons-halflings-regular.woff2'),
+                   this.destinationPath('public/bootstrap/fonts/glyphicons-halflings-regular.woff2'));
+      this.fs.copy(this.templatePath('public/bootstrap/js/bootstrap.min.js'),
+                   this.destinationPath('public/bootstrap/js/bootstrap.min.js'));
+      this.fs.copy(this.templatePath('public/bootstrap/js/npm.js'),
+                   this.destinationPath('public/bootstrap/js/npm.js'));
     },
 
     projectfiles: function () {
-
-      this.fs.copy(this.templatePath('public/_bower.json'),
-                   this.destinationPath('public/bower.json'));
       this.fs.copy(this.templatePath('_gitignore'),
                    this.destinationPath('.gitignore'));
       this.fs.copy(this.templatePath('_Dockerfile'),
@@ -48,14 +77,14 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    var that = this;
-
     process.chdir('api');
     this.npmInstall();
+    /*
     setTimeout(function() {
       process.chdir('../public');
       that.bowerInstall();
     }, 1000);
+    */
   }
 });
 
