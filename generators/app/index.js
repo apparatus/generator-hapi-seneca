@@ -6,12 +6,20 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
+
+      var opts = {
+        name: this.options.name || 'NAME_ME',
+        transport: this.options.transport || 'http'
+      };
+
       this.fs.copy(this.templatePath('api/_index.js'),
                    this.destinationPath('api/index.js'));
-      this.fs.copy(this.templatePath('api/_package.json'),
-                   this.destinationPath('api/package.json'));
-      this.fs.copy(this.templatePath('api/_services.js'),
-                   this.destinationPath('api/services.js'));
+      this.fs.copyTpl(this.templatePath('api/_package.json'),
+                  this.destinationPath('api/package.json'),
+                  opts);
+      this.fs.copyTpl(this.templatePath('api/_services.js'),
+                  this.destinationPath('api/services.js'),
+                  opts);
       this.fs.copy(this.templatePath('api/_static.js'),
                    this.destinationPath('api/static.js'));
       this.fs.copy(this.templatePath('api/_templates.js'),
@@ -79,12 +87,6 @@ module.exports = yeoman.generators.Base.extend({
   install: function () {
     process.chdir('api');
     this.npmInstall();
-    /*
-    setTimeout(function() {
-      process.chdir('../public');
-      that.bowerInstall();
-    }, 1000);
-    */
   }
 });
 
