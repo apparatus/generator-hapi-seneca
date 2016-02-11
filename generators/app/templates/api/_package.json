@@ -1,5 +1,5 @@
 {
-  "name": "site",
+  "name": "<%=name%>",
   "description": "my awesome site",
   "keywords": [
     "awesome",
@@ -11,6 +11,9 @@
     "node": "*"
   },
   "dependencies": {
+    <% if (transport === 'redis') { %>
+    "seneca-redis-queue-transport": "0.1.1",
+    <% } %>
     "good": "^6.4.0",
     "good-console": "^5.1.0",
     "handlebars": "^4.0.3",

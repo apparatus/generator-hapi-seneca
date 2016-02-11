@@ -2,8 +2,14 @@
 
 var seneca = require('seneca')();
 
-seneca.client({host: process.env.PROXY_HOST, port: process.env.service1_PORT, pin: {role: 'service1'}});
-seneca.client({host: process.env.PROXY_HOST, port: process.env.service2_PORT, pin: {role: 'service2'}});
+<% if (transport === 'redis') { %>
+seneca.use('redis-queue-transport')
+seneca.client({type: 'redis-queue', pin: 'role:service1,cmd:*'});
+seneca.client({type: 'redis-queue', pin: 'role:service2,cmd:*'});
+<% } else { %>
+seneca.client({host: process.env.PROXY_HOST, port: process.env.service1_PORT, pin: 'role:service1'});
+seneca.client({host: process.env.PROXY_HOST, port: process.env.service2_PORT, pin: 'role:service2'});
+<% } %>
 
 module.exports = function(server) {
   server.route({
@@ -43,4 +49,3 @@ module.exports = function(server) {
     }
   });
 };
-
