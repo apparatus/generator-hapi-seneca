@@ -1,8 +1,6 @@
 'use strict';
 
 var Hapi = require('hapi');
-var staticContent = require('./static');
-var templates = require('./templates');
 var services = require('./services');
 
 var server = new Hapi.Server();
@@ -12,8 +10,6 @@ server.connection({
   host: process.env.SERVICE_HOST
 });
 
-templates(server);
-staticContent(server);
 services(server);
 
 server.register({
@@ -26,4 +22,3 @@ server.register({
       console.log('listening on port: ' + process.env.SERVICE_PORT);
     });
 });
-
