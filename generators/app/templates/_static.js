@@ -9,7 +9,7 @@ module.exports = function(server) {
       path: '/public/css/{param}',
       handler: {
         directory: {
-          path: __dirname + '/../public/css',
+          path: __dirname + '/public/css',
           listing: false
         }
       }
@@ -20,7 +20,7 @@ module.exports = function(server) {
       path: '/public/js/{param}',
       handler: {
         directory: {
-          path: __dirname + '/../public/js',
+          path: __dirname + '/public/js',
           listing: false
         }
       }
@@ -31,7 +31,7 @@ module.exports = function(server) {
       path: '/public/bootstrap/{param*}',
       handler: {
         directory: {
-          path: __dirname + '/../public/bootstrap',
+          path: __dirname + '/public/bootstrap',
           listing: false
         }
       }
@@ -42,11 +42,10 @@ module.exports = function(server) {
       path: '/public/img/{param}',
       handler: {
         directory: {
-          path: __dirname + '/../public/img',
+          path: __dirname + '/public/img',
           listing: false
         }
       }
     });
   });
 };
-

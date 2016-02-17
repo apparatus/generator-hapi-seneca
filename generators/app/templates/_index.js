@@ -2,8 +2,8 @@
 
 var Hapi = require('hapi');
 var staticContent = require('./static');
+var apiProxy = require('./proxy');
 var templates = require('./templates');
-var services = require('./services');
 
 var server = new Hapi.Server();
 
@@ -14,7 +14,7 @@ server.connection({
 
 templates(server);
 staticContent(server);
-services(server);
+apiProxy(server);
 
 server.register({
   register: require('good'),

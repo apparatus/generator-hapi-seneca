@@ -5,21 +5,17 @@
     "awesome",
     "site"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "engines": {
     "node": "*"
   },
   "dependencies": {
-    <% if (transport === 'redis') { %>
-    "seneca-redis-queue-transport": "0.1.1",
-    <% } %>
     "good": "^6.4.0",
     "good-console": "^5.1.0",
     "handlebars": "^4.0.3",
     "hapi": "^10.5.0",
     "inert": "^3.1.0",
-    "seneca": "^0.7.1",
     "vision": "^3.0.0"
   },
   "repository": {
