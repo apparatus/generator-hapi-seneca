@@ -12,20 +12,21 @@ module.exports = yeoman.generators.Base.extend({
         transport: this.options.transport || 'http'
       };
 
-      this.fs.copy(this.templatePath('api/_index.js'),
-                   this.destinationPath('api/index.js'));
-      this.fs.copyTpl(this.templatePath('api/_package.json'),
-                  this.destinationPath('api/package.json'),
+      this.fs.copy(this.templatePath('_index.js'),
+                   this.destinationPath('index.js'));
+      this.fs.copyTpl(this.templatePath('_package.json'),
+                  this.destinationPath('package.json'),
                   opts);
-      this.fs.copyTpl(this.templatePath('api/_services.js'),
-                  this.destinationPath('api/services.js'),
-                  opts);
-      this.fs.copy(this.templatePath('api/_static.js'),
-                   this.destinationPath('api/static.js'));
-      this.fs.copy(this.templatePath('api/_templates.js'),
-                   this.destinationPath('api/templates.js'));
-      this.fs.copy(this.templatePath('api/test/_siteTest.js'),
-                   this.destinationPath('api/test/siteTest.js'));
+
+      this.fs.copy(this.templatePath('_static.js'),
+                   this.destinationPath('static.js'));
+      this.fs.copy(this.templatePath('_templates.js'),
+                   this.destinationPath('templates.js'));
+      this.fs.copy(this.templatePath('_proxy.js'),
+                   this.destinationPath('proxy.js'));
+
+      this.fs.copy(this.templatePath('test/_siteTest.js'),
+                   this.destinationPath('test/siteTest.js'));
 
       this.fs.copy(this.templatePath('public/js/_jquery.min.js'),
                    this.destinationPath('public/js/jquery.min.js'));
@@ -79,13 +80,12 @@ module.exports = yeoman.generators.Base.extend({
                    this.destinationPath('Dockerfile'));
       this.fs.copy(this.templatePath('_jshintrc'),
                    this.destinationPath('.jshintrc'));
-      this.fs.copy(this.templatePath('api/_istanbul.yml'),
-                   this.destinationPath('api/.istanbul.yml'));
+      this.fs.copy(this.templatePath('_istanbul.yml'),
+                   this.destinationPath('.istanbul.yml'));
     }
   },
 
   install: function () {
-    process.chdir('api');
     this.npmInstall();
   }
 });

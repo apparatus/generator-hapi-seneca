@@ -26,4 +26,3 @@ server.register({
       console.log('listening on port: ' + process.env.SERVICE_PORT);
     });
 });
-
