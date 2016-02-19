@@ -17,7 +17,7 @@
     "good": "^6.4.0",
     "good-console": "^5.1.0",
     "hapi": "^10.5.0",
-    "seneca": "^0.7.1",
+    "seneca": "^0.7.1"
   },
   "repository": {
     "private": true
