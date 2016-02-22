@@ -8,7 +8,7 @@ module.exports = function(server) {
       engines: {
         html: require('handlebars')
       },
-      relativeTo: __dirname + '/../public/views',
+      relativeTo: __dirname + '/public/views',
       path: '.',
       helpersPath: 'helpers'
     });

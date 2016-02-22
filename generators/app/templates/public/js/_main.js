@@ -1,24 +1,24 @@
 !function () {
   $('#s1a1').click(function() {
-    $.get('/service1/action1', function(result) {
+    $.get('/api/service1/action1', function(result) {
       output($('#s1a1').data(), result)
     });
   });
 
   $('#s1a2').click(function() {
-    $.get('/service1/action2', function(result) {
+    $.get('/api/service1/action2', function(result) {
       output($('#s1a2').data(), result)
     });
   });
 
   $('#s2a1').click(function() {
-    $.get('/service2/action1', function(result) {
+    $.get('/api/service2/action1', function(result) {
       output($('#s2a1').data(), result)
     });
   });
 
   $('#s2a2').click(function() {
-    $.get('/service2/action2', function(result) {
+    $.get('/api/service2/action2', function(result) {
       output($('#s2a2').data(), result)
     });
   });
