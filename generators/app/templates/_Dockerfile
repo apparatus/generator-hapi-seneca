@@ -1,8 +1,4 @@
 FROM node
-ADD api/package.json /api/
-RUN cd api && npm install
-ADD public/package.json /public/
-RUN cd api && npm install
 ADD . /
+RUN cd api && npm install
 CMD node api/index.js
-
