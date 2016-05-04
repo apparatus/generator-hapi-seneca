@@ -1,3 +1,6 @@
+# Project Status :
+This plugin is not being supported by the seneca organization,  and is no longer proven to work.
+If you are interested in maintaining this project, please contact us via the issue queue.
 # generator-react-hapi-seneca [![Build Status](https://secure.travis-ci.org/pelger/generator-react-hapi-seneca.png?branch=master)](https://travis-ci.org/pelger/generator-react-hapi-seneca)
 
 > [Yeoman](http://yeoman.io) generator
